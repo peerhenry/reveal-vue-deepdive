@@ -1,0 +1,26 @@
+
+
+1. asserting
+const foo = 1
+const bar = 2
+console.assert(foo === bar, `expected foo (${foo}) to be bar (${bar})`)
+
+1. styling
+console.log('%c Hello world!', 'color: maroon; font-weight: bold; text-transform: uppercase;')
+
+2. table
+var piet = {name: 'Piet', age: 34, height: 164}
+var jan = {name: 'Jan', age: 52, height: 201}
+var klaas = {name: 'Klaas', age: 2, height: 44}
+console.table([piet, jan, klaas])
+
+3. timing
+console.time('alpha')
+setTimeout(() => console.timeEnd('alpha'), 500)
+
+4. tracing
+function foo() {
+// do stuff
+console.trace('I am tracing foo()')
+}
+foo()

@@ -1,0 +1,11 @@
+
+
+- A bit of history
+  - two way binding: angularjs: "feature", react: "bug"
+  - Evan You pet project
+  - laravell community
+  - react license issue: ... and then a lot of react devs started noticing
+- observer pattern
+- reactivity demo: this isn't how javascript usually works
+- vue has it, react has it, angular...
+- Object.defineProperty (no support for IE8, but if you need that I truly pitty you)
