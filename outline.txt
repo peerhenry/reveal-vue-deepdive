@@ -1,0 +1,26 @@
+
+
+
+My name is Peer, I work at Infi but I'm also into game dev, even though I've never worked at a game company or released any game myself.
+Collision detection, linear algebra, optimization, opengl, sprites, sound, music.
+
+
+AngularJS was released back in October 20, 2010
+Backenders will think this is a fresh and new framework
+But frontenders will know 9 years, that's ancient. That's prehistoric.
+Pure backenders think omg another frontend framework? Howmany more before it's enough?
+You guys are just jumping on whatever is the latest and greatest
+
+Skip to 2013, Facebook releases React
+Purely a view layer, that utilises this brand new concept called the virtual DOM.
+Whoever invented the idea of virtual dom should get like a nobel prize for frontend.
+- Slide - on virtual dom
+
+2014, Vue
+
+2016, Angular 2
+Thanks to Google for proving that most recent does not mean the best.
+
+
+
+Why is Vue awesome?

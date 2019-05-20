@@ -4,16 +4,50 @@
       .slides
         section
           h1 Vue deepdive
-          .row
-            img(src="./assets/logo.png" height="300")
-        section
-          h2 Getting started...
-          p.fragment Raw JS
-          p.fragment Webpack
-          p.fragment Vue CLI
+          img(src="@pics/logo.png" height="300")
+          p Peer Fisser @ Inficon 2019
+        
+        History
 
         section
-          img(src="./assets/risingstars.png")
+          h2 Why vue is awesome?
+          .row
+            .col-50
+              ul
+                li Virtual Dom
+                li Great CLI/UI
+                li User-backed
+                li Webpack
+                li Easy code-splitting
+            .col-50
+              ul
+                li Avoiding bias
+                li 
+                  a(href="https://stefankrause.net/js-frameworks-benchmark8/table.html") Exceptionally fast
+                li Modular libs
+                li Great ecosystem
+                li Reactive
+
+        section
+          h2 Vue as an awesome reactivity system...
+          h2.fragment ...but not without some subtle tradeoffs
+          ul.fragment
+            li Why is component data a function?
+            li Why and when do I need Vue.set()?
+
+        section
+          h2 Reactivity demo
+
+        section
+          h2 unit test demo
+
+        section
+          h2 Revue Vue.set
+        
+        section
+          h2 Thank you!
+          p 
+            a(href="https://github.com/peerhenry/reveal-vue-deepdive") https://github.com/peerhenry/reveal-vue-deepdive
 </template>
 
 <script>
@@ -25,7 +59,10 @@ export default {
     // HelloWorld
   },
   mounted() {
-    Reveal.initialize()
+    Reveal.initialize({
+      width: '100%',
+      height: '100%',
+    })
   },
 }
 </script>
@@ -54,10 +91,10 @@ export default {
   float: left;
   padding: 1em;
   box-sizing: border-box;
-  background-color: #222;
+  // background-color: #222;
 
   &:nth-child(even) {
-    background-color: #444;
+    // background-color: #444;
   }
 }
 
