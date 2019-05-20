@@ -3,13 +3,9 @@
     .reveal
       .slides
         section
-          h1 Introductie VueJS
-          h1 + vs. Angular
+          h1 Vue deepdive
           .row
-            .col-50
-              img(src="./assets/angular.jpg" height="300")
-            .col-50
-              img(src="./assets/logo.png" height="300")
+            img(src="./assets/logo.png" height="300")
         section
           h2 Getting started...
           p.fragment Raw JS
@@ -68,25 +64,5 @@ export default {
 .reveal section img {
   background-color: white;
   margin: 0;
-}
-
-.abs-indicator {
-  position: absolute;
-  top: -100px;
-  left: -100px;
-  background-color: white;
-}
-
-.abs-indicator-two {
-  position: absolute;
-  top: 0px;
-  left: -100px;
-  background-color: white;
-}
-
-.indicator {
-  float: left;
-  margin: 0 0;
-  background-color: white;
 }
 </style>
