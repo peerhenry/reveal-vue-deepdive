@@ -6,6 +6,7 @@
           h1 Vue deepdive
           img(src="@pics/logo.png" height="300")
           p Peer Fisser @ Inficon 2019
+          aside Oh these are som enotes
         
         History
 
@@ -59,9 +60,38 @@ export default {
     // HelloWorld
   },
   mounted() {
+    // also available: highlight, markdown, math, multiplex, notes, notes-server, print-pdf, search, zoom-js
     Reveal.initialize({
       width: '100%',
       height: '100%',
+      dependencies: [
+        // Interpret Markdown in <section> elements
+        /*{
+          src: '@assets/plugin/markdown/marked.js',
+          condition: function() {
+            return !!document.querySelector('[data-markdown]')
+          },
+        },
+        {
+          src: 'plugin/markdown/markdown.js',
+          condition: function() {
+            return !!document.querySelector('[data-markdown]')
+          },
+        },*/
+
+        // Syntax highlight for <code> elements
+        /*{
+          src: 'plugin/highlight/highlight.js',
+          async: true,
+          callback: function() {
+            hljs.initHighlightingOnLoad()
+          },
+        },*/
+
+        // Zoom in and out with Alt+click
+        // { src: 'plugin/zoom-js/zoom.js', async: true },*/
+        { src: 'plugin/notes/notes.js', async: true },
+      ],
     })
   },
 }

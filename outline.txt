@@ -21,6 +21,8 @@ Whoever invented the idea of virtual dom should get like a nobel prize for front
 2016, Angular 2
 Thanks to Google for proving that most recent does not mean the best.
 
+2019 Inficon
 
+--- infinite loop intermezzo, supermario ---
 
 Why is Vue awesome?
