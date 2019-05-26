@@ -52,47 +52,29 @@
 </template>
 
 <script>
-import Reveal from 'reveal.js/js/reveal'
+// import Reveal from 'reveal.js'
 
 export default {
   name: 'app',
   components: {
     // HelloWorld
   },
+  data() {
+    return { mounted: false }
+  },
   mounted() {
-    // also available: highlight, markdown, math, multiplex, notes, notes-server, print-pdf, search, zoom-js
-    Reveal.initialize({
-      width: '100%',
-      height: '100%',
-      dependencies: [
-        // Interpret Markdown in <section> elements
-        /*{
-          src: '@assets/plugin/markdown/marked.js',
-          condition: function() {
-            return !!document.querySelector('[data-markdown]')
-          },
-        },
-        {
-          src: 'plugin/markdown/markdown.js',
-          condition: function() {
-            return !!document.querySelector('[data-markdown]')
-          },
-        },*/
-
-        // Syntax highlight for <code> elements
-        /*{
-          src: 'plugin/highlight/highlight.js',
-          async: true,
-          callback: function() {
-            hljs.initHighlightingOnLoad()
-          },
-        },*/
-
-        // Zoom in and out with Alt+click
-        // { src: 'plugin/zoom-js/zoom.js', async: true },*/
-        { src: 'plugin/notes/notes.js', async: true },
-      ],
-    })
+    if (!this.mounted)
+      Reveal.initialize({
+        width: '100%',
+        height: '100%',
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true },
+        ],
+      })
+    this.mounted = true
   },
 }
 </script>
