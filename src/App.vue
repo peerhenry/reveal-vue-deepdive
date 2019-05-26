@@ -52,7 +52,8 @@
 </template>
 
 <script>
-// import Reveal from 'reveal.js'
+// import Reveal from 'reveal'
+import Reveal from 'reveal'
 
 export default {
   name: 'app',
