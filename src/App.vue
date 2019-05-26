@@ -5,8 +5,9 @@
         section
           h1 Vue deepdive
           img(src="@pics/logo.png" height="300")
+          img(src="@pics/inficon.png" height="300")
           p Peer Fisser @ Inficon 2019
-          aside Oh these are som enotes
+          aside.notes Oh these are som enotes
         
         History
 
@@ -15,35 +16,62 @@
           .row
             .col-50
               ul
-                li Virtual Dom
-                li Great CLI/UI
-                li User-backed
-                li Webpack
-                li Easy code-splitting
+                li.fragment Virtual Dom
+                li.fragment Great CLI/UI
+                li.fragment User-backed
+                li.fragment PWA / SSR
+                li.fragment Easy code-splitting
             .col-50
               ul
-                li Avoiding bias
-                li 
+                li.fragment Avoiding bias
+                li.fragment 
                   a(href="https://stefankrause.net/js-frameworks-benchmark8/table.html") Exceptionally fast
-                li Modular libs
-                li Great ecosystem
-                li Reactive
+                li.fragment Modular libs
+                li.fragment Great ecosystem
+                li.fragment Reactive
 
         section
-          h2 Vue as an awesome reactivity system...
-          h2.fragment ...but not without some subtle tradeoffs
-          ul.fragment
-            li Why is component data a function?
-            li Why and when do I need Vue.set()?
+          h2 What is reactivity?
+          p.fragment(data-fragment-index="1") When I update state...
+          p.fragment(data-fragment-index="2") ...anything depending on that state should update as well
+          h2.fragment(data-fragment-index="3") Updating stuff updates other stuff
+
 
         section
           h2 Reactivity demo
+          aside.notes
+            ul
+              li make a render function
+              li getter/setter
+              li target/subscribers
+        
+        section
+          h2 All the reactive things
+          .col-50
+            ul
+              li.fragment 👍 get / set
+              .fragment
+                li 👍 push()
+                li 👍 pop()
+                li 👍 splice()
+                li 👍 shift()
+                li 👍 sort()
+                li 👍 reverse()
+          .col-50
+            img(src="@pics/all_the_things.jpg" height="300")
+        
+        section
+          h2 All the non-reactive things
+          ul
+            li.fragment Setting array value by index
+            li.fragment Dynamically adding properties
+          p.fragment(style="font-size: 92px") {{ '=> Use Vue.set()' }}
+
+        section
+          p Proxies: only Evergreen browsers/no polyfills
 
         section
           h2 unit test demo
-
-        section
-          h2 Revue Vue.set
         
         section
           h2 Thank you!
