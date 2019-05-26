@@ -5,10 +5,23 @@ section
     .left
       ul
         li.fragment(data-fragment-index="1") 2010 AngularJS
+          aside.notes
+            p ancient
         li.fragment(data-fragment-index="2") 2013 React
+          aside.notes 
+            p introduced us to this new concept called the virtual DOM
+            p The DOM can be represented as a data structure in Javascript, too.
+            p Why do this? Because it’s expensive to update the DOM, but not expensive to update the virtual DOM.
+            p A typical page exists of thousands of DOM nodes, and having many small updates slows down the page.
         li.fragment(data-fragment-index="3") 2014 VueJS
+          aside.notes 
+            p Evan You open-sourced his pet project
+            p Got picked up by Laravell community
+            p React's license was too strict for Apache Foundation, which took the drastic step of banning the library
         li.fragment(data-fragment-index="4") 2016 (sep) Angular2
+          aside.notes
         li.fragment(data-fragment-index="5") 2016 (feb) Evan You goes fulltime
+          aside.notes
         li.fragment(data-fragment-index="6") 2019 Inficon!
     .right(style="height: 900px;")
       img.pic.fragment.fade-in-then-out(src="@pics/angular-JS.jpg"  data-fragment-index="1")

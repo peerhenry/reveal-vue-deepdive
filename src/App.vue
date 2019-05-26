@@ -10,18 +10,28 @@
             video(loop autoplay)
               source(src="@assets/smb.mp4" type="video/mp4")
               | Your browser does not support the video tag.
-          aside.notes
-            ul
-              li howmany of you have worked with Vue?
-              li I will glance over some history, glance over featues, obviously we won't have time to go over all of the tools and features that make Vue awesome.
-              li So this talk I will give you a taste of how Vue works behind the scenes by talking about its reactivity system, and how that boosts your productivity in frontend development.
+          aside.notes Howmany of you have worked with Vue?
 
-        // section
-          h1 Vue deepdive
-          img(src="@pics/logo.png" height="300")
-          img(src="@pics/inficon.png" height="300")
-          p Peer Fisser @ Inficon 2019
-          aside.notes Oh these are som enotes
+        section(style="width: 100%; height: 100%")
+          video(loop autoplay style="width: 100%; height: 100%")
+            source(src="@assets/andromeda.mp4" type="video/mp4")
+          div.fragment(data-fragment-index="1" style="position: absolute; width: 100vw; height: 100vh; top: 0; left: 0; background: black; opacity: 0.5;")
+          div(style="position: absolute; width: 100vw; height: 100vh; top: 0; left: 0")
+            ul.fragment.fade-out(data-fragment-index="4" style="position: absolute; top: 45%; left: 45%; text-shadow: 0 0 2px black;")
+              li.fragment(data-fragment-index="1") Physics
+              li.fragment(data-fragment-index="2") Games
+              li.fragment(data-fragment-index="3") Programming
+            .fragment(data-fragment-index="4" style="position: absolute; top: 10%; left: 10%; text-shadow: 0 0 2px black;")
+              h2 Contents
+              ul
+                li History
+                li Virtual DOM
+                li Overview Vue featues
+                li Reactivity with Object.defineProperty()
+                li Reactivity with Proxy
+              aside.notes
+                p Obviously we don't have time to go into all of the wonderful tools and features that vue has to offer
+                p So I am going to focus on the reactivity system, and how that boosts your productivity in frontend development.
         
         History
 
@@ -170,10 +180,43 @@
           aside.notes Unshimmable. No polyfill and no way to fake them in older browsers.
 
         section
-          h2 unit test demo
+          div(style="width: 80%; margin: auto")
+            .col-50
+              h2 Vue component
+              ul
+                li data
+                li computed
+                li methods
+            .col-50
+              h2 Vuex store
+              ul
+                li state
+                li getters
+                li actions & mutations
         
         section
           h2 events
+          p Child component
+          pre(style="width: 50%;")
+            code.hljs(data-trim data-noescape) this.$emit('myEvent', myPayload)
+          .fragment
+            p Parent component
+            pre(style="width: 50%;")
+              code.hljs(data-trim data-noescape) &lt;MyComponent @myEvent="payload =&gt; $emit('myEvent', payload)"/&gt;
+        
+        section
+          p(style="font-weight: bold; font-size: 120%;") Using the store to simplify event handling
+          p Component A
+          pre(style="width: 50%;")
+            code.hljs(data-trim data-noescape) this.$store.commit('SET_LOADING', true)
+          .fragment
+            p Store
+            pre(style="width: 50%;")
+              code.hljs(data-trim data-noescape) SET_LOADING: (state, payload) =&gt; state.loading = payload
+          .fragment
+            p Component B
+            pre(style="width: 50%;")
+              code.hljs(data-trim data-noescape) this.$store.state.loading
         
         section
           h2 Thank you!

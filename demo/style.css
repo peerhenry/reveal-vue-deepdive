@@ -55,7 +55,7 @@ html, body{
 }
 
 .snow>#title-wrap>#title {
-  animation: text-flicker 1s linear infinite;
+  animation: text-flicker 1.2s linear infinite;
 }
 
 @keyframes text-flicker {
@@ -95,14 +95,12 @@ html, body{
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg">\ <text fill="white" font-size="50" x=".25em" y=".8em">❄</text></svg>');
   background-size: var(--tile) var(--tile-y);
   animation: snow-fall 1s linear infinite;
+  opacity: 0.5;
 }
 
 @keyframes snow-fall {
   0% { 
     transform: translate(0px, 0px);
-  }
-  50% { 
-    transform: translate(0px, 60px); 
   }
   100% { 
     transform: translate(0px, 120px);
@@ -112,9 +110,6 @@ html, body{
 @keyframes snow-fall-2 {
   0% { 
     transform: translate(0px, 0px);
-  }
-  50% { 
-    transform: translate(0px, 30px); 
   }
   100% { 
     transform: translate(0px, 60px);

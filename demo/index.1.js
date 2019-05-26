@@ -1,6 +1,4 @@
-let state = {
-  x: 1,
-}
+let state = { x: 1 }
 
 let target = null
 
@@ -14,8 +12,8 @@ Object.keys(state).forEach(key => {
       }
       return innerValue
     },
-    set(val) {
-      innerValue = val
+    set(value) {
+      innerValue = value
       for (const sub of subscribers) sub()
     },
   })
