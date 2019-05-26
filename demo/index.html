@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,9 +7,26 @@
     <title>Reactivity Demo 🎳</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <h1 id="title">Loading...</h1>
-    <h2 id="double"></h2>
+  <body id="body">
+    <div class="thing"></div>
+    <div id="title-wrap">
+      <div id="title">
+        Loading...
+        <div class="loading-wrapper">
+          <h1 class="loading">🎳</h1>
+        </div>
+      </div>
+    </div>
+    <script>
+      function decorate() {
+        const body = document.getElementById('body')
+        body.classList.add('snow')
+      }
+      function undecorate() {
+        const body = document.getElementById('body')
+        body.classList.remove('snow')
+      }
+    </script>
     <script src="index.js"></script>
   </body>
 </html>

@@ -1,4 +1,6 @@
-let state = { x: 1 }
+let state = {
+  x: 1,
+}
 
 let target = null
 
