@@ -19,8 +19,8 @@
           div(style="position: absolute; width: 100vw; height: 100vh; top: 0; left: 0")
             ul.fragment.fade-out(data-fragment-index="4" style="position: absolute; top: 45%; left: 45%; text-shadow: 0 0 2px black;")
               li.fragment(data-fragment-index="1") Physics
-              li.fragment(data-fragment-index="2") Games
-              li.fragment(data-fragment-index="3") Programming
+              li.fragment(data-fragment-index="2") Web development
+              li.fragment(data-fragment-index="3") Games
             .fragment(data-fragment-index="4" style="position: absolute; top: 10%; left: 10%; text-shadow: 0 0 2px black;")
               h2 Contents
               ul
@@ -29,9 +29,12 @@
                 li Overview Vue featues
                 li Reactivity with Object.defineProperty()
                 li Reactivity with Proxy
+                li Events
+                li Vuex
               aside.notes
+                p ...
                 p Obviously we don't have time to go into all of the wonderful tools and features that vue has to offer
-                p So I am going to focus on the reactivity system, and how that boosts your productivity in frontend development.
+                p So I am going to focus on the reactivity system, and explain how that boosts your productivity in frontend development.
         
         History
 
@@ -59,12 +62,14 @@
             .col-50
               ul
                 li.fragment(data-fragment-index="2") Avoiding bias
-                  aside.notes You can use typescript, but it's optional. You can use single file components or class based components. You can use templates, or render functions, with or without JSX. So you can really taylor your development experience to your preference or needs.
+                  aside.notes 
+                    p According to the docs, the core team tries very hard to avoid bias. And this is noticable when you see many different ways you can setup a project.
+                    p You can use typescript, but it's optional. You can use single file components or class based components. You can use templates, or render functions, with or without JSX. So you can really taylor your development experience to your preference or needs.
                 li.fragment(data-fragment-index="4") 
                   a(href="https://stefankrause.net/js-frameworks-benchmark8/table.html") Exceptionally fast
                   aside.notes It's fast. This is a link to benchmarks, in case youd would like to review this presentation
                 li.fragment(data-fragment-index="6") Huge ecosystem
-                  aside.notes
+                  aside.notes It has an ever growing ecosystem. Documentation, libraries, theming and testing utilities to name but a few.
                 li.fragment(data-fragment-index="8") SSR support
                   aside.notes
                 li.fragment(data-fragment-index="10") Reactive
@@ -80,7 +85,8 @@
           h2 ...updates other stuff
 
         section
-          pre(style="width: 50%;")
+          img(src="@pics/component.png")
+          // pre(style="width: 50%;")
             code.hljs(data-trim data-noescape style="padding: 1em;")
               | new Vue({
               |   data: {
@@ -96,6 +102,16 @@
               |     return h('p', `€ ${this.totalPrice}`)
               |   },
               | })
+          aside.notes
+            ul
+              li From the looks of it, this is some kind of shopping basket item.
+              li We are using the render function, but we could have jut as easily used a template.
+              li How do achieve reactivity? In other words...
+              li No need to query and update the DOM.
+              li No need to call a setData function.
+              li No need to use RXJS with observables and subscriptions
+              li Just assign a new value to price, and anything depending on price, either directly or indirectly will update.
+              li So this reactivity model relieves us from a great deal of cognitive overhead, and that's one of the reasons why it gices us such a great productivity boost.
 
         section
           h2 Reactivity demo
@@ -127,6 +143,7 @@
             li.fragment Setting array value by index
             li.fragment Dynamically adding properties
           p.fragment(style="font-size: 92px") {{ '=> Use Vue.set()' }}
+          aside.notes Sadly there are some things that we cannot intercept with the Object API
 
         section(style="content-align: center;")
           h2 Use Vue.set()
@@ -152,16 +169,15 @@
           .col-50
             pre.fragment
               code.hljs(data-trim data-noescape) new Proxy(target, handler)
-              aside.notes This is the syntax for the Proxy API. The target is the original thing you need to access, the handler contains the interceptors for whatever you need, such as get or set.
             pre.fragment
               code.hljs(data-trim data-noescape)
                 | function observe(data) {
                 |   const observedData = new Proxy(data, {
                 |     get() {
-                |
+                |       // subscribe target
                 |     },
                 |     set() {
-                |
+                |       // trigger subscribers
                 |     },
                 |     deleteProperty() {
                 |
@@ -170,6 +186,9 @@
                 | }
           .col-50
             img(src="@pics/proxy.png" height="400")
+          aside.notes 
+            p This is the syntax for the Proxy API. The target is the original thing you need to access, the handler contains the interceptors for whatever you need, such as get or set.
+            p ... don't need Vue.set ...So why don't we use proxies.
         
         section
           h2 Proxies
@@ -178,6 +197,23 @@
           p.fragment Use <span style="color: orange">2.x</span> if you do 
             span.fragment (don't fortget <span style="color: lime">Vue.set()</span>)
           aside.notes Unshimmable. No polyfill and no way to fake them in older browsers.
+        
+        section
+          h2 events
+          p Child component
+          pre(style="width: 50%;")
+            code.hljs(data-trim data-noescape) this.$emit('updateAmount', amount)
+          .fragment
+            p Parent component
+            pre(style="width: 60%;")
+              code.hljs(data-trim data-noescape) &lt;MyComponent @updateAmount="amount =&gt; $emit('updateAmount', amount)"/&gt;
+          aside.notes
+            p ... supereasy ... anywhere in your component ...
+            p ...This only emits to the parent, if you want to emit to the grandparent...
+            p Sometimes you have big form...
+        
+        section
+          h2 Communicate events using Vuex
 
         section
           div(style="width: 80%; margin: auto")
@@ -195,28 +231,32 @@
                 li actions & mutations
         
         section
-          h2 events
-          p Child component
-          pre(style="width: 50%;")
-            code.hljs(data-trim data-noescape) this.$emit('myEvent', myPayload)
-          .fragment
-            p Parent component
-            pre(style="width: 50%;")
-              code.hljs(data-trim data-noescape) &lt;MyComponent @myEvent="payload =&gt; $emit('myEvent', payload)"/&gt;
+          img(src="@pics/vuex.png")
+          // pre(style="width: 50%;")
+            code.hljs(data-trim data-noescape style="padding: 1em;")
+              | new Vuex.Store({
+              |   state: {
+              |     price: 22.99,
+              |     amount: 3
+              |   },
+              |   getters: {
+              |     totalPrice: (state) =&gt; state.price*state.amount
+              |   },
+              | })
         
         section
-          p(style="font-weight: bold; font-size: 120%;") Using the store to simplify event handling
+          p(style="font-weight: bold; font-size: 120%;") The store is reactive
           p Component A
-          pre(style="width: 50%;")
-            code.hljs(data-trim data-noescape) this.$store.commit('SET_LOADING', true)
-          .fragment
+          pre.fragment(style="width: 50%;" data-fragment-index="2")
+            code.hljs(data-trim data-noescape) this.$store.commit('SET_AMOUNT', 5)
+          div
             p Store
-            pre(style="width: 50%;")
-              code.hljs(data-trim data-noescape) SET_LOADING: (state, payload) =&gt; state.loading = payload
-          .fragment
+            pre.fragment(style="width: 50%;" data-fragment-index="1")
+              code.hljs(data-trim data-noescape) SET_AMOUNT: (state, payload) =&gt; state.amount = payload
+          div
             p Component B
-            pre(style="width: 50%;")
-              code.hljs(data-trim data-noescape) this.$store.state.loading
+            pre.fragment(style="width: 50%;" data-fragment-index="3")
+              code.hljs(data-trim data-noescape) this.$store.getters.totalPrice
         
         section
           h2 Thank you!
